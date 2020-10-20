@@ -1,0 +1,31 @@
+version: '3'
+services:
+  app:
+    container_name: "episen-sca-tda-backend"
+    build: ./episen-sca-tda-backend
+    labels:
+      - "com.example.demo.version=3.0.0"
+      - "com.example.demo.dockerfile.date=18.10.2020"
+    ports:
+      - "8080:8080"
+    volumes:
+      - angular:/var/lib/
+    links:
+      - "angular"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.30'
+          memory: 128m
+        reservations:
+          cpus: '0.15'
+          memory: 64M
+  angular:
+    container_name: "episen-sca-tda-front"
+    build: ./episen-sca-tda-front
+    ports:
+      - "80:80"
+
+volumes:
+    angular:
+
