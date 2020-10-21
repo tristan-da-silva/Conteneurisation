@@ -8,7 +8,7 @@ export abstract class RestService {
   protected headers = new HttpHeaders({'content-type': 'application/json'});
 
   constructor(protected endpoint: string, protected http: HttpClient) {
-    this.completeBackendServerUrl = `http://172.31.249.111:8080`;
+    this.completeBackendServerUrl = `http://localhost:8080`;
   }
 
   create(entity: any): Observable<any> {
