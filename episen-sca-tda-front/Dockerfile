@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-COPY /dist/frontAngular/ /usr/share/nginx/html 
+COPY /dist/episen-sca-tda-front/ /usr/share/nginx/html 
 
 EXPOSE 80
 
