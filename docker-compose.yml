@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     container_name: "episen-sca-tda-backend"
-    build: ./episen-sca-tda-backend
+    image: tristandasilvasousa/episen-sca-tda-back
     labels:
       - "com.example.demo.version=3.0.0"
       - "com.example.demo.dockerfile.date=18.10.2020"
@@ -22,7 +22,7 @@ services:
           memory: 64M
   angular:
     container_name: "episen-sca-tda-front"
-    build: ./episen-sca-tda-front
+    image: tristandasilvasousa/episen-sca-tda-front
     ports:
       - "80:80"
 
