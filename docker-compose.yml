@@ -5,14 +5,16 @@ services:
     image: tristandasilvasousa/episen-sca-tda-back
     labels:
       - "com.example.demo.version=3.0.0"
-      - "com.example.demo.dockerfile.date=18.10.2020"
+      - "com.example.demo.dockerfile.date=23.11.2020"
     ports:
       - "8080:8080"
     volumes:
       - angular:/var/lib/
+      - backend:/home/tp4/log4j.log
     links:
       - "angular"
     deploy:
+      replicas: 2
       resources:
         limits:
           cpus: '0.30'
@@ -20,12 +22,29 @@ services:
         reservations:
           cpus: '0.15'
           memory: 64M
+      restart_policy:
+        condition: on-failure
   angular:
     container_name: "episen-sca-tda-front"
     image: tristandasilvasousa/episen-sca-tda-front
     ports:
       - "80:80"
+    volumes:
+      - frontend:/var/log/nginx/error.log
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '0.30'
+          memory: 128m
+        reservations:
+          cpus: '0.15'
+          memory: 64M
+      restart_policy:
+        condition: on-failure    
 
 volumes:
     angular:
+    frontend:
+    backend:
 
